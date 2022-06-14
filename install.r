@@ -18,11 +18,11 @@ install.packages("rJava")
 
 install.packages("devtools")
 library(devtools)
-devtools::install_bitbucket(
-		repo = "bucklerlab/rTASSEL",
-		ref = "master",
-		build_vignettes = FALSE
-) 
+#devtools::install_bitbucket(
+#		repo = "bucklerlab/rTASSEL",
+#		ref = "master",
+#		build_vignettes = FALSE
+#) 
 
 
 
