@@ -1,5 +1,5 @@
-install.packages("rlang")
-install.packages("dplyr")
+#install.packages("rlang")
+install.packages("dplyr",dependencies=TRUE)
 install.packages("rrBLUP")
 install.packages("vcfR")
 
