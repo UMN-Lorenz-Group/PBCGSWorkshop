@@ -23,7 +23,7 @@ install.packages("rJava")
 
 Sys.setenv(LD_LIBRARY_PATH='/usr/lib/R/lib:/usr/lib/x86_64-linux-gnu:/usr/lib/jvm/java-17-openjdk-amd64/lib/server/')
 Sys.getenv("LD_LIBRARY_PATH")
-#dyn.load("/usr/lib/jvm/java-17-openjdk-amd64/lib/server/libjvm.so")
+dyn.load("/usr/lib/jvm/java-17-openjdk-amd64/lib/server/libjvm.so")
 library(rJava)
 
 
