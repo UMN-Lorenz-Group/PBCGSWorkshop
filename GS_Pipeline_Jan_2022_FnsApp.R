@@ -1,14 +1,53 @@
 ##### SoygenGS App Functions
 
+ ##### SoygenGS App Functions
+ remove.packages("rlang")
+ if(!require("rlang", quietly = TRUE)){
+    install.packages("rlang")
+ }
+  library(rlang) 
+
+
+ if(!require("dplyr", quietly = TRUE)){
+    install.packages("dplyr")
+ }
+  library(dplyr) 
+
+ if(!require("rrBLUP", quietly = TRUE)){
+     install.packages("rrBLUP")
+ }
   library(rrBLUP)
+
+if(!require("vcfR", quietly = TRUE)){
+    install.packages("vcfR")
+ }
   library(vcfR)
-  library(dplyr)  
+
+ 
+if(!require("NAM", quietly = TRUE)){
+     install.packages("NAM")
+ }
   library(NAM)
-  library(bWGR)
+
+if(!require("bWGR", quietly = TRUE)){
+     install.packages("bWGR")
+ }
+ library(bWGR)
+
+ if(!require("STPGA", quietly = TRUE)){
+     install.packages("STPGA")
+ }
   library(STPGA)
+if(!require("BGLR", quietly = TRUE)){
+     install.packages("BGLR")
+ }
   library(BGLR)
+if(!require("sommer", quietly = TRUE)){
+     install.packages("sommer")
+ }
   library(sommer)
  
+   
  
   if (!require("BiocManager", quietly = TRUE))
   install.packages("BiocManager")
@@ -25,19 +64,19 @@
    }
    library(devtools)
    
-    if(!require("rTASSEL", quietly = TRUE)){
-	 devtools::install_bitbucket(
-		repo = "bucklerlab/rTASSEL",
-		#host = "bitbucket.org",
-		ref = "master",
-		build_vignettes = FALSE
-		#INSTALL_opts = "--no-multiarch"
-	 ) 
-  } 
+   # if(!require("rTASSEL", quietly = TRUE)){
+ 	# devtools::install_bitbucket(
+	#	repo = "bucklerlab/rTASSEL",
+	#	#host = "bitbucket.org",
+	#	ref = "master",
+	#	build_vignettes = FALSE
+	#	#INSTALL_opts = "--no-multiarch"
+	# ) 
+  #} 
   
   
- options(repos = BiocManager::repositories())
- library(rTASSEL)
+ #options(repos = BiocManager::repositories())
+ #library(rTASSEL)
   
   
   
