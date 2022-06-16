@@ -19,7 +19,7 @@ library(BiocManager)
 install.packages("devtools")
 library(devtools)
 
-#install.packages("rJava")
+install.packages("rJava")
 #devtools::install_bitbucket(
 #		repo = "bucklerlab/rTASSEL",
 #		ref = "master",
