@@ -14,10 +14,12 @@ BiocManager::install(version = "3.14")
  
 options(repos = BiocManager::repositories())
 library(BiocManager)
-install.packages("rJava")
+
 
 install.packages("devtools")
 library(devtools)
+
+#install.packages("rJava")
 #devtools::install_bitbucket(
 #		repo = "bucklerlab/rTASSEL",
 #		ref = "master",
