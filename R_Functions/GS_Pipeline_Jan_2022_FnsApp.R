@@ -63,13 +63,11 @@ if(!require("sommer", quietly = TRUE)){
      install.packages("devtools")
    }
    library(devtools)
-   
-    library(devtools)
 
 
-   dyn.load('/usr/lib/jvm/java-17-openjdk-amd64/lib/server/libjvm.so')
-   library(rJava)
-   if(!require("rTASSEL", quietly = TRUE)){
+dyn.load('/usr/lib/jvm/java-17-openjdk-amd64/lib/server/libjvm.so')
+library(rJava)
+if(!require("rTASSEL", quietly = TRUE)){
       devtools::install_bitbucket(
 		repo = "bucklerlab/rTASSEL",
 	 	ref = "master",
@@ -77,6 +75,7 @@ if(!require("sommer", quietly = TRUE)){
       ) 
     } 
   library(rTASSEL)
+   
   
    
 
