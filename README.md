@@ -1,2 +1,3 @@
 # PBCGSWorkshop
-[![Binder](https://mybinder.org/badge_logo.svg)](https://notebooks.gesis.org/binder/jupyter/user/ivanvishnu-pbcgsworkshop-f8yyv8kj/lab)
+[![Binder](https://mybinder.org/badge_logo.svg)](https://notebooks.gesis.org/binder/v2/gh/ivanvishnu/PBCGSWorkshop.git/main)
+
