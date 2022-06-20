@@ -1,5 +1,5 @@
 if(!require(shiny)){
-  install.packages("shiny")
+	install.packages("shiny")
 }
 library(shiny) 
 
@@ -604,7 +604,9 @@ server <- function(input,output){
      
       if(impMethod()=="Numeric"){ 
          
-        getImputedData(FiltGeno(),l(),k(),impMethod())
+         l <- reactive(NULL)
+         k<- reactive(NULL)
+         getImputedData(FiltGeno(),l(),k(),impMethod())
          
       }
       if(impMethod()=="LDKNNI"){ 
@@ -910,7 +912,7 @@ server <- function(input,output){
  
     output$plots <- renderPlot({
       if(nSelTraits()==1){
-            plot.default(outputList()[,2],outputList()[,3],type="p",xlab="Predicted Value",ylab="Upper Bound of Reliability",main=paste("Upper bound of Reliability vs Predicted Values for ",Trait(),sep=""),font.lab=2,cex.lab=1.25)
+            plot.default(outputList()[,2],outputList()[,3],type="p",xlab="Predicted Value",ylab="Upper Bound of Reliability",main="Upper bound of Reliability vs Predicted Values",font.lab=2,cex.lab=1.25)
       } 
     })
     
@@ -921,7 +923,7 @@ server <- function(input,output){
       lapply(1:nSelTraits(),function(i){
         loc_i <- reactive(i)
         output[[noquote(paste("'","plot",loc_i(),"'",sep=""))]] <- renderPlot({
-          plot.default(outputList()[,(nSelTraits()+1)],outputList()[,(nSelTraits()+2)],type="p",xlab="Predicted Value",ylab="Upper Bound of Reliability",main=paste("Upper Bound of Reliability vs Predicted Values for ",Trait()[loc_i()],sep=""),font.lab=2,cex.lab=1.25)
+          plot.default(outputList()[,(nSelTraits()+1)],outputList()[,(nSelTraits()+2)],type="p",xlab="Predicted Value",ylab="Upper Bound of Reliability",main="Upper Bound of Reliability vs Predicted Values",font.lab=2,cex.lab=1.25)
         })
         
       })
@@ -939,7 +941,7 @@ server <- function(input,output){
         lapply(1:nSelTraits(),function(i){
                loc_i <- reactive(i)
                output[[noquote(paste("'","plot",loc_i(),"'",sep=""))]] <- renderPlot({
-                   plot.default(outputListMT()[,(nSelTraits()+1)],outputListMT()[,(nSelTraits()+2)],type="p",xlab="Predicted Value",ylab="Upper Bound of Reliability",main=paste("Upper bound of Reliability vs Predicted Values for ",Trait()[loc_i()],sep=""),font.lab=2,cex.lab=1.25)
+                   plot.default(outputListMT()[,(nSelTraits()+1)],outputListMT()[,(nSelTraits()+2)],type="p",xlab="Predicted Value",ylab="Upper Bound of Reliability",main="Upper bound of Reliability vs Predicted Values",font.lab=2,cex.lab=1.25)
                 })
          
         })

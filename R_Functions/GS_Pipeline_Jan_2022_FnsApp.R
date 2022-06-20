@@ -77,7 +77,37 @@ if(!require("rTASSEL", quietly = TRUE)){
   library(rTASSEL)
    
   
+if(!require("qtl", quietly = TRUE)){
+    install.packages("qtl")
+    library(qtl)
+ }
+ if(!require("PopVar", quietly = TRUE)){
+  install.packages("PopVar")
+  library(PopVar)
+ }
+ if(!require("tibble", quietly = TRUE)){
+  install.packages("tibble")
+  library(tibble)
+ }
    
+   
+library(vcfR)
+library(rrBLUP)
+library(BGLR)
+library(STPGA)
+library(NAM)
+
+
+#easy impute, replacing missing with marker mean
+replaceNAwithMean <- function(mat){
+  replaceNAwithMeanVec <- function(vec){
+    mu <- mean(vec, na.rm=TRUE)
+    vec[is.na(vec)] <- mu
+    return(vec)
+  }
+  return(apply(mat, 2, replaceNAwithMeanVec))
+}
+
 
   
 ###########################################################################################  
@@ -1309,7 +1339,7 @@ getPredictionData <- function(Data_Table_Num_List,noCandidates){
 	# if(length(testNAIndices)==0){ }
 	trainGeno_Imp2 <- apply(trainGeno_Imp,2,function(x) x+1)  
 	
-    cleanData <- cleanREP(trainPheno,trainGeno_Imp2)
+    cleanData <- cleanREP(trainPheno,trainGeno_Imp)
     M <-  cleanData[[2]]
     M.Pdt <- t(M)%*% solve(M %*% t(M) + diag(nrow(M))) %*% M
       
@@ -1468,7 +1498,7 @@ getPredictionData <- function(Data_Table_Num_List,noCandidates){
 ### Upper bound of Reliability
 
     trainGeno_Imp2 <- apply(trainGeno_Imp,2,function(x) x+1)  
-    cleanData <- cleanREP(trainPheno,trainGeno_Imp2)
+    cleanData <- cleanREP(trainPheno,trainGeno_Imp)
     M <-  cleanData[[2]]
     M.Pdt <- t(M)%*% solve(M %*% t(M) + diag(nrow(M))) %*% M
       
