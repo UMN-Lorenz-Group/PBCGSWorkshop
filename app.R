@@ -943,7 +943,7 @@ server <- function(input,output){
         lapply(1:nSelTraits(),function(i){
                loc_i <- reactive(i)
                output[[noquote(paste("'","plot",loc_i(),"'",sep=""))]] <- renderPlot({
-                   plot.default(outputListMT()[,(nSelTraits()+1)],outputListMT()[,(nSelTraits()+2)],type="p",xlab="Predicted Value",ylab="Upper Bound of Reliability",main=paste("Upper bound of Reliability vs Predicted Values for ",Trait()[loc_i()],sep=""),font.lab=2,cex.lab=1.25)
+                   plot.default(outputListMT()[,(loc_i()+1)],outputListMT()[,(nSelTraits()+2)],type="p",xlab="Predicted Value",ylab="Upper Bound of Reliability",main=paste("Upper bound of Reliability vs Predicted Values for ",Trait()[loc_i()],sep=""),font.lab=2,cex.lab=1.25)
                 })
          
         })
