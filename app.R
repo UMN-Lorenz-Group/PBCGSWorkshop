@@ -3,7 +3,7 @@ library(shiny)
 
 ### Change source file path to working directory
 
-FN <- paste(getwd(),"/GS_Pipeline_Jan_2022_FnsApp.R",sep="")
+FN <- paste(getwd(),"/R_Functions/GS_Pipeline_Jan_2022_FnsApp.R",sep="")
 source(FN)
 
 PN <-  paste(getwd(),"/GSPipeline.png",sep="")
