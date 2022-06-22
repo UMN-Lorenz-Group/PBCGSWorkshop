@@ -62,10 +62,8 @@ if(!require("BGLR", quietly = TRUE)){
     if(!require("rTASSEL", quietly = TRUE)){
 	 devtools::install_bitbucket(
 		repo = "bucklerlab/rTASSEL",
-		host = "bitbucket.org",
 		ref = "master",
-		build_vignettes = FALSE,
-		INSTALL_opts = "--no-multiarch"
+		build_vignettes = FALSE		
 	 ) 
   } 
   
