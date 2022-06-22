@@ -1,6 +1,14 @@
 ##### SoygenGS App Functions
 
-   if(!require("dplyr", quietly = TRUE)){
+ ##### SoygenGS App Functions
+ # remove.packages("rlang")
+ # if(!require("rlang", quietly = TRUE)){
+    # install.packages("rlang")
+ # }
+  # library(rlang) 
+
+
+ if(!require("dplyr", quietly = TRUE)){
     install.packages("dplyr")
  }
   library(dplyr) 
@@ -34,44 +42,40 @@ if(!require("BGLR", quietly = TRUE)){
      install.packages("BGLR")
  }
   library(BGLR)
-
+if(!require("sommer", quietly = TRUE)){
+     install.packages("sommer")
+ }
+  library(sommer)
  
- 
-  #if (!require("BiocManager", quietly = TRUE))
- # install.packages("BiocManager")
- # BiocManager::install(version = "3.14")
- 
- # options(repos = BiocManager::repositories())
-  #suppressPackageStartupMessages(library(BiocManager))
    
  
-  options(rsconnect.http.trace = TRUE)
+  # if (!require("BiocManager", quietly = TRUE))
+  # install.packages("BiocManager")
+  # BiocManager::install(version = "3.14")
+ 
+  # options(repos = BiocManager::repositories())
+  # library(BiocManager)
+   
+ 
+  #options(rsconnect.http.trace = TRUE)
   
    if(!require("devtools", quietly = TRUE)){
      install.packages("devtools")
    }
    library(devtools)
-   
-   
-   if(!require("sommer", quietly = TRUE)){
-     library(devtools); install_github('covaruber/sommer')
-   }
-  suppressPackageStartupMessages(library(sommer))
-   
-   
-    if(!require("rTASSEL", quietly = TRUE)){
-	 devtools::install_bitbucket(
+
+
+  dyn.load('/usr/lib/jvm/java-17-openjdk-amd64/lib/server/libjvm.so')
+  library(rJava)
+  if(!require("rTASSEL", quietly = TRUE)){
+      devtools::install_bitbucket(
 		repo = "bucklerlab/rTASSEL",
-		host = "bitbucket.org",
-		ref = "master",
-		build_vignettes = FALSE,
-		INSTALL_opts = "--no-multiarch"
-	 ) 
-  } 
-  
-  
- #options(repos = BiocManager::repositories())
- library(rTASSEL)
+	 	ref = "master",
+	 	build_vignettes = FALSE
+      ) 
+    } 
+  library(rTASSEL)
+   
   
 if(!require("qtl", quietly = TRUE)){
     install.packages("qtl")
@@ -85,21 +89,25 @@ if(!require("qtl", quietly = TRUE)){
   install.packages("tibble")
   library(tibble)
  }
-  
-  
-  
-  # if(!require("rTASSEL", quietly = TRUE)){
-	 # devtools::install_bitbucket_server(
-		# repo = "bucklerLab/rTASSEL",
-		# Sys.getenv("BITBUCKET_HOST"),
-		# host = "bitbucket.org",
-		# ref = "master",
-		# build_vignettes = FALSE,
-		# INSTALL_opts = "--no-multiarch"
-		
-	 # ) 
-  # }
-  
+   
+   
+library(vcfR)
+library(rrBLUP)
+library(BGLR)
+library(STPGA)
+library(NAM)
+
+
+#easy impute, replacing missing with marker mean
+replaceNAwithMean <- function(mat){
+  replaceNAwithMeanVec <- function(vec){
+    mu <- mean(vec, na.rm=TRUE)
+    vec[is.na(vec)] <- mu
+    return(vec)
+  }
+  return(apply(mat, 2, replaceNAwithMeanVec))
+}
+
 
   
 ###########################################################################################  
@@ -1330,12 +1338,8 @@ getPredictionData <- function(Data_Table_Num_List,noCandidates){
 	# }
 	# if(length(testNAIndices)==0){ }
 	trainGeno_Imp2 <- apply(trainGeno_Imp,2,function(x) x+1)  
-	#print(anyNA(trainGeno_Imp2))
-	#print(anyNA(trainPheno))
-	#write.table(trainPheno,"trainPhenoCRep.csv")
-	#write.table(trainGeno_Imp2,"trainGenoTab.txt",sep="\t",quote=FALSE,row.names=FALSE)
-   	
-	cleanData <- cleanREPV2(trainPheno,trainGeno_Imp)
+	
+    cleanData <- cleanREP(trainPheno,trainGeno_Imp)
     M <-  cleanData[[2]]
     M.Pdt <- t(M)%*% solve(M %*% t(M) + diag(nrow(M))) %*% M
       
@@ -1370,7 +1374,7 @@ getPredictionData <- function(Data_Table_Num_List,noCandidates){
 #### 
 
 
-getRankedPredictedValuesMT <- function(Data_Table_Num_Filt_List,nTraits,trait,GPModelMT,optTS=NULL){ 
+ getRankedPredictedValuesMT <- function(Data_Table_Num_Filt_List,nTraits,trait,GPModelMT,optTS=NULL){ 
    
 	 TrainData_Table_Num_Filt <- Data_Table_Num_Filt_List[[1]]
 	 TestData_Table_Num_Filt <- Data_Table_Num_Filt_List[[2]]
@@ -1494,7 +1498,6 @@ getRankedPredictedValuesMT <- function(Data_Table_Num_Filt_List,nTraits,trait,GP
 ### Upper bound of Reliability
 
     trainGeno_Imp2 <- apply(trainGeno_Imp,2,function(x) x+1)  
-   
     cleanData <- cleanREP(trainPheno,trainGeno_Imp)
     M <-  cleanData[[2]]
     M.Pdt <- t(M)%*% solve(M %*% t(M) + diag(nrow(M))) %*% M
