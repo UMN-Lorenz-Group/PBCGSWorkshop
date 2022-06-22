@@ -58,16 +58,16 @@ if(!require("BGLR", quietly = TRUE)){
    }
   suppressPackageStartupMessages(library(sommer))
    
-   
-    if(!require("rTASSEL", quietly = TRUE)){
+  dyn.load('/usr/lib/jvm/java-17-openjdk-amd64/lib/server/libjvm.so')
+  library(rJava)
+  if(!require("rTASSEL", quietly = TRUE)){
 	 devtools::install_bitbucket(
 		repo = "bucklerlab/rTASSEL",
 		ref = "master",
 		build_vignettes = FALSE		
 	 ) 
   } 
-  
-  
+   
  #options(repos = BiocManager::repositories())
  library(rTASSEL)
   
