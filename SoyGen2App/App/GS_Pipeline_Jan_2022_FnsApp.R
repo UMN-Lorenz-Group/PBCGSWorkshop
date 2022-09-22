@@ -1,43 +1,43 @@
 ##### SoygenGS App Functions
 
  if(!require("dplyr"
- quietly = TRUE)){
+ ,quietly = TRUE)){
     install.packages("dplyr")
  }
   library(dplyr) 
 
  if(!require("rrBLUP"
- quietly = TRUE)){
+ ,quietly = TRUE)){
      install.packages("rrBLUP")
  }
   library(rrBLUP)
 
 if(!require("vcfR"
- quietly = TRUE)){
+ ,quietly = TRUE)){
     install.packages("vcfR")
  }
   library(vcfR)
 
  
 if(!require("NAM"
- quietly = TRUE)){
+ ,quietly = TRUE)){
      install.packages("NAM")
  }
   library(NAM)
 
 if(!require("bWGR"
- quietly = TRUE)){
+ ,quietly = TRUE)){
      install.packages("bWGR")
  }
  library(bWGR)
 
  if(!require("STPGA"
- quietly = TRUE)){
+ ,quietly = TRUE)){
      install.packages("STPGA")
  }
   library(STPGA)
 if(!require("BGLR"
- quietly = TRUE)){
+ ,quietly = TRUE)){
      install.packages("BGLR")
  }
   library(BGLR)
@@ -45,7 +45,7 @@ if(!require("BGLR"
  
  
   #if (!require("BiocManager"
- quietly = TRUE))
+ ,quietly = TRUE))
  # install.packages("BiocManager")
  # BiocManager::install(version = "3.14")
  
@@ -56,21 +56,21 @@ if(!require("BGLR"
   options(rsconnect.http.trace = TRUE)
   
    if(!require("devtools"
- quietly = TRUE)){
+ ,quietly = TRUE)){
      install.packages("devtools")
    }
    library(devtools)
    
    
    if(!require("sommer"
- quietly = TRUE)){
+ ,quietly = TRUE)){
      library(devtools); install_github('covaruber/sommer')
    }
   suppressPackageStartupMessages(library(sommer))
    
    
  #   if(!require("rTASSEL"
- quietly = TRUE)){
+ ,quietly = TRUE)){
 #	 devtools::install_bitbucket(
 #		repo = "bucklerlab/rTASSEL"
 
@@ -94,7 +94,7 @@ if(file.exists("/usr/lib/jvm/java-17-openjdk-amd64/lib/server/libjvm.so")){
 
 library(rJava)
 if(!require("rTASSEL"
- quietly = TRUE)){
+ ,quietly = TRUE)){
       devtools::install_bitbucket(
 		repo = "bucklerlab/rTASSEL"
 
@@ -108,17 +108,17 @@ if(!require("rTASSEL"
   
   
 if(!require("qtl"
- quietly = TRUE)){
+ ,quietly = TRUE)){
     install.packages("qtl")
     library(qtl)
  }
  if(!require("PopVar"
- quietly = TRUE)){
+ ,quietly = TRUE)){
   install.packages("PopVar")
   library(PopVar)
  }
  if(!require("tibble"
- quietly = TRUE)){
+ ,quietly = TRUE)){
   install.packages("tibble")
   library(tibble)
  }
