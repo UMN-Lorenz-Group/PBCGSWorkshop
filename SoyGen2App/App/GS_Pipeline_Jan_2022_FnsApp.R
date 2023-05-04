@@ -66,11 +66,12 @@ if(!require("BGLR"
  ,quietly = TRUE)){
      library(devtools); install_github('covaruber/sommer')
    }
-  suppressPackageStartupMessages(library(sommer))
+
+suppressPackageStartupMessages(library(sommer))
    
    
- #   if(!require("rTASSEL"
- ,quietly = TRUE)){
+#   if(!require("rTASSEL"
+# ,quietly = TRUE)){
 #	 devtools::install_bitbucket(
 #		repo = "bucklerlab/rTASSEL"
 
